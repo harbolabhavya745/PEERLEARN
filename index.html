@@ -1,0 +1,590 @@
+# PeerLearn Organized GitHub Repository Structure
+
+```txt
+peerlearn/
+│
+├── index.html
+├── README.md
+├── LICENSE
+│
+├── css/
+│   ├── styles.css
+│   ├── responsive.css
+│   └── darkmode.css
+│
+├── js/
+│   ├── app.js
+│   ├── quiz.js
+│   ├── profile.js
+│   ├── chat.js
+│   └── theme.js
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── screenshots/
+│
+└── components/
+    ├── navbar.html
+    ├── sidebar.html
+    └── modals.html
+```
+
+---
+
+# index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerLearn</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="p-login" class="page active">
+  <div class="login-wrap">
+    <div class="login-logo">PeerLearn</div>
+    <p class="login-sub">Learn together. Grow together. ✨</p>
+
+    <div class="login-card">
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="student@email.com">
+      </div>
+
+      <div class="form-field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+
+      <button class="btn btn-accent" onclick="enterApp()">
+        <i class="ti ti-arrow-right"></i>
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="app-shell" class="hidden">
+
+  <aside class="sidebar">
+    <div class="logo">P</div>
+
+    <button class="nav-btn active">
+      <i class="ti ti-home"></i>
+    </button>
+
+    <button class="nav-btn">
+      <i class="ti ti-user-circle"></i>
+    </button>
+
+    <button class="nav-btn">
+      <i class="ti ti-brain"></i>
+    </button>
+  </aside>
+
+  <div class="main">
+
+    <div class="topbar">
+      <span class="topbar-title">Dashboard</span>
+
+      <button class="dark-toggle" onclick="toggleDark()">
+        <i class="ti ti-moon"></i>
+      </button>
+    </div>
+
+    <div id="p-home" class="page active">
+
+      <div class="hero-strip">
+        <div>
+          <h2>Good Evening 👋</h2>
+          <p>You are on a 5-day streak.</p>
+        </div>
+
+        <button class="btn btn-accent">
+          Take Quiz
+        </button>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-num">47</span>
+          <div class="stat-lbl">Quizzes</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-num">1240</span>
+          <div class="stat-lbl">XP</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recent Activity</h3>
+
+        <div class="feed-item">
+          <div class="feed-ava">R</div>
+
+          <div>
+            <div>Riya solved your doubt</div>
+            <div class="time">2 mins ago</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/chat.js"></script>
+
+</body>
+</html>
+```
+
+---
+
+# css/styles.css
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f4ff;
+  --bg2: #ffffff;
+  --text: #1a163c;
+  --accent: #6366f1;
+  --green: #059669;
+  --purple: #7c3aed;
+  --border: rgba(99,102,241,0.1);
+  --shadow: 0 2px 16px rgba(99,102,241,0.09);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hidden {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 68px;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#c8ff00,#ff2d9b);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav-btn:hover {
+  background: rgba(99,102,241,0.1);
+}
+
+.main {
+  margin-left: 68px;
+}
+
+.topbar {
+  height: 56px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page {
+  padding: 24px;
+}
+
+.hero-strip {
+  background: linear-gradient(120deg,rgba(99,102,241,.07),rgba(219,39,119,.05));
+  padding: 24px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: white;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.feed-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.feed-ava {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(99,102,241,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.login-wrap {
+  width: 420px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+.login-card {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+```
+
+---
+
+# css/darkmode.css
+
+```css
+[data-theme="dark"] {
+  --bg: #0f0e1a;
+  --bg2: #16152a;
+  --text: #e8e6ff;
+  --border: rgba(99,102,241,0.2);
+}
+
+[data-theme="dark"] .topbar,
+[data-theme="dark"] .card,
+[data-theme="dark"] .login-card,
+[data-theme="dark"] .stat-card {
+  background: #1e1c33;
+}
+```
+
+---
+
+# css/responsive.css
+
+```css
+@media(max-width:768px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-strip {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .login-wrap {
+    width: 100%;
+    padding: 24px;
+  }
+}
+```
+
+---
+
+# js/theme.js
+
+```javascript
+function toggleDark() {
+  const html = document.documentElement;
+
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+window.onload = () => {
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+};
+```
+
+---
+
+# js/app.js
+
+```javascript
+function enterApp() {
+  document.getElementById('p-login').classList.add('hidden');
+  document.getElementById('app-shell').classList.remove('hidden');
+}
+
+function showPage(pageId) {
+
+  const pages = document.querySelectorAll('.page');
+
+  pages.forEach(page => {
+    page.classList.remove('active');
+  });
+
+  const targetPage = document.getElementById(`p-${pageId}`);
+
+  if (targetPage) {
+    targetPage.classList.add('active');
+  }
+}
+```
+
+---
+
+# js/quiz.js
+
+```javascript
+const quizQuestions = [
+  {
+    question: 'What is the time complexity of binary search?',
+    options: ['O(n)', 'O(log n)', 'O(n²)', 'O(1)'],
+    answer: 'O(log n)'
+  },
+  {
+    question: 'Which language runs in browser?',
+    options: ['Python', 'Java', 'C++', 'JavaScript'],
+    answer: 'JavaScript'
+  }
+];
+
+console.log('Quiz system initialized');
+```
+
+---
+
+# js/profile.js
+
+```javascript
+function updateProfileName(name) {
+  document.querySelector('.profile-name').innerText = name;
+}
+
+console.log('Profile module loaded');
+```
+
+---
+
+# js/chat.js
+
+```javascript
+function sendMessage() {
+  console.log('Message sent');
+}
+```
+
+---
+
+# README.md
+
+````md
+# PeerLearn
+
+PeerLearn is a collaborative learning platform where students can:
+
+- connect with peers
+- join study groups
+- take AI-powered quizzes
+- customize profiles
+- chat and video call
+
+## Features
+
+- Responsive UI
+- Dark Mode
+- AI Quiz Engine
+- Peer Chat
+- Video Calling
+- Gamified XP System
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+
+## Run Locally
+
+Clone the repository:
+
+```bash
+ git clone https://github.com/yourusername/peerlearn.git
+````
+
+Open:
+
+```bash
+index.html
+```
+
+## Future Improvements
+
+* Firebase Authentication
+* Real-time chat
+* AI-generated quizzes
+* Leaderboards
+* Notes marketplace
+
+````
+
+---
+
+# Git Commands
+
+```bash
+mkdir peerlearn
+cd peerlearn
+
+git init
+
+git add .
+
+git commit -m "Initial PeerLearn setup"
+````
+
+Push to GitHub:
+
+```bash
+git remote add origin https://github.com/yourusername/peerlearn.git
+
+git branch -M main
+
+git push -u origin main
+```
+
+---
+
+# Best Commit Message Style
+
+```bash
+git commit -m "Added dark mode toggle"
+
+git commit -m "Created responsive dashboard layout"
+
+git commit -m "Implemented quiz system"
+
+git commit -m "Added profile customization"
+```
+
+Tiny clean commits > giant chaos blob 🌌
