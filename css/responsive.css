@@ -1,0 +1,24 @@
+@media(max-width:768px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-strip {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .login-wrap {
+    width: 100%;
+    padding: 24px;
+  }
