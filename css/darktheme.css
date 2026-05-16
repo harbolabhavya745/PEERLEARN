@@ -1,0 +1,13 @@
+[data-theme="dark"] {
+  --bg: #0f0e1a;
+  --bg2: #16152a;
+  --text: #e8e6ff;
+  --border: rgba(99,102,241,0.2);
+}
+
+[data-theme="dark"] .topbar,
+[data-theme="dark"] .card,
+[data-theme="dark"] .login-card,
+[data-theme="dark"] .stat-card {
+  background: #1e1c33;
+}
